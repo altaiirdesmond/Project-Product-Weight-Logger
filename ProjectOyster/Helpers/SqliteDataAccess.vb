@@ -7,6 +7,7 @@ Public Class SqliteDataAccess
     Public Shared Sub AddOyster(oyster As Oyster)
         Using cnn As IDbConnection = New SQLiteConnection(LoadConnectionString())
             Try
+                cnn.Execute("INSERT INTO Oyster VALUES(@Time, @Weight)", oyster)
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
             End Try
