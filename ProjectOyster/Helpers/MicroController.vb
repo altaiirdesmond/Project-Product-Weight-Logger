@@ -45,6 +45,10 @@ Public Class MicroController
         End If
     End Sub
 
+    Public Sub WriteToPort(data As String)
+        SerialPort.Write(data)
+    End Sub
+
     Public Sub ClosePort()
         If SerialPort.IsOpen Then
             SerialPort.Close()

@@ -8,6 +8,7 @@ Public Class SqliteDataAccess
         Using cnn As IDbConnection = New SQLiteConnection(LoadConnectionString())
             Try
                 cnn.Execute("INSERT INTO Oyster VALUES(@Time, @Weight)", oyster)
+                MsgBox("added to database!")
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
             End Try
@@ -16,9 +17,6 @@ Public Class SqliteDataAccess
 
     Public Shared Function GetAll() As List(Of Oyster)
         Using cnn As IDbConnection = New SQLiteConnection(LoadConnectionString())
-            For Each t In cnn.Query(Of Oyster)("SELECT * FROM Oyster").ToList()
-                MessageBox.Show(t.Weight)
-            Next
             Return cnn.Query(Of Oyster)("SELECT * FROM Oyster").ToList()
         End Using
     End Function
