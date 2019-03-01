@@ -22,43 +22,87 @@ Partial Class SerialPortMenu
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SerialPortMenu))
         Me.ComboBoxPorts = New System.Windows.Forms.ComboBox()
         Me.ButtonConnect = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.ButtonCancel = New System.Windows.Forms.Button()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ComboBoxPorts
         '
+        Me.ComboBoxPorts.BackColor = System.Drawing.Color.White
+        Me.ComboBoxPorts.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ComboBoxPorts.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.ComboBoxPorts.ForeColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(22, Byte), Integer))
         Me.ComboBoxPorts.FormattingEnabled = True
-        Me.ComboBoxPorts.Location = New System.Drawing.Point(34, 37)
+        Me.ComboBoxPorts.Location = New System.Drawing.Point(88, 43)
         Me.ComboBoxPorts.Name = "ComboBoxPorts"
-        Me.ComboBoxPorts.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBoxPorts.Size = New System.Drawing.Size(132, 24)
         Me.ComboBoxPorts.TabIndex = 0
         Me.ComboBoxPorts.Text = "Ports"
         '
         'ButtonConnect
         '
-        Me.ButtonConnect.Location = New System.Drawing.Point(180, 35)
+        Me.ButtonConnect.BackColor = System.Drawing.Color.White
+        Me.ButtonConnect.DialogResult = System.Windows.Forms.DialogResult.OK
+        Me.ButtonConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonConnect.Font = New System.Drawing.Font("Century Gothic", 10.0!)
+        Me.ButtonConnect.ForeColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(22, Byte), Integer))
+        Me.ButtonConnect.Location = New System.Drawing.Point(32, 107)
         Me.ButtonConnect.Name = "ButtonConnect"
-        Me.ButtonConnect.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonConnect.Size = New System.Drawing.Size(95, 33)
         Me.ButtonConnect.TabIndex = 1
         Me.ButtonConnect.Text = "Connect"
-        Me.ButtonConnect.UseVisualStyleBackColor = True
+        Me.ButtonConnect.UseVisualStyleBackColor = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(295, 180)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 2
+        Me.PictureBox1.TabStop = False
+        '
+        'ButtonCancel
+        '
+        Me.ButtonCancel.BackColor = System.Drawing.Color.White
+        Me.ButtonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.ButtonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonCancel.Font = New System.Drawing.Font("Century Gothic", 10.0!)
+        Me.ButtonCancel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(22, Byte), Integer))
+        Me.ButtonCancel.Location = New System.Drawing.Point(162, 107)
+        Me.ButtonCancel.Name = "ButtonCancel"
+        Me.ButtonCancel.Size = New System.Drawing.Size(95, 33)
+        Me.ButtonCancel.TabIndex = 3
+        Me.ButtonCancel.Text = "Cancel"
+        Me.ButtonCancel.UseVisualStyleBackColor = False
         '
         'SerialPortMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(295, 97)
+        Me.BackColor = System.Drawing.Color.White
+        Me.ClientSize = New System.Drawing.Size(295, 180)
+        Me.Controls.Add(Me.ButtonCancel)
         Me.Controls.Add(Me.ButtonConnect)
         Me.Controls.Add(Me.ComboBoxPorts)
+        Me.Controls.Add(Me.PictureBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "SerialPortMenu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "SerialPortMenu"
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents ComboBoxPorts As ComboBox
     Friend WithEvents ButtonConnect As Button
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents ButtonCancel As Button
 End Class

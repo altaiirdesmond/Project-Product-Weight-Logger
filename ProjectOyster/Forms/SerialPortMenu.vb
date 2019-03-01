@@ -1,7 +1,4 @@
-﻿Imports System.IO.Ports
-
-Public Class SerialPortMenu
-
+﻿Public Class SerialPortMenu
     Private mcu As MicroController
 
     Public ReadOnly Property MicroControllerSetup() As MicroController
@@ -17,8 +14,8 @@ Public Class SerialPortMenu
         Next
     End Sub
 
+    ' Pick a port
     Private Sub ButtonConnect_Click(sender As Object, e As EventArgs) Handles ButtonConnect.Click
         mcu.Port = ComboBoxPorts.Text
-        Me.Close()
     End Sub
 End Class

@@ -1,5 +1,4 @@
-﻿Imports System.Data
-Imports System.Data.SQLite
+﻿Imports System.Data.SQLite
 Imports Dapper
 
 Public Class SqliteDataAccess
@@ -21,12 +20,12 @@ Public Class SqliteDataAccess
         End Using
     End Function
 
-    Public Shared Function GetUser(username As String, password As String) As User
+    Public Shared Function GetUser(username As String, password As String) As Integer
         Using cnn As IDbConnection = New SQLiteConnection(LoadConnectionString())
-            Return cnn.Query("SELECT * FROM User WHERE Username=@username AND Password=@password", New With {
+            Return cnn.Query(Of User)("SELECT * FROM User WHERE Username=@username AND Password=@password", New With {
                 username,
                 password
-            }).FirstOrDefault()
+            }).ToList().Count
         End Using
     End Function
 
