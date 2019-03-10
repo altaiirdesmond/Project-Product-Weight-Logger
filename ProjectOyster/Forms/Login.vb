@@ -9,12 +9,18 @@
     End Sub
 
     Private Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles ButtonLogin.Click
-        If (SqliteDataAccess.GetUser(TextBoxUsername.Text, TextBoxPassword.Text) = 0) Then
+        If (SqliteDataAccess.GetUserCount(TextBoxUsername.Text, TextBoxPassword.Text) = 0) Then
             MessageBox.Show("Invalid user", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return
         End If
 
         Dim mm As Menu = New Menu()
+
+        If SqliteDataAccess.IsAdmin(TextBoxUsername.Text, TextBoxPassword.Text) = False Then
+            ' Set different view for normal user
+            mm.SetGraphic(176, 81)
+        End If
+
         mm.Show()
         Hide()
     End Sub

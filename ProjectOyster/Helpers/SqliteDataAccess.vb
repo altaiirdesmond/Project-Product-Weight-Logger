@@ -20,13 +20,29 @@ Public Class SqliteDataAccess
         End Using
     End Function
 
-    Public Shared Function GetUser(username As String, password As String) As Integer
+    Public Shared Function GetUserCount(username As String, password As String) As Integer
         Using cnn As IDbConnection = New SQLiteConnection(LoadConnectionString())
             Return cnn.Query(Of User)("SELECT * FROM User WHERE Username=@username AND Password=@password", New With {
                 username,
                 password
             }).ToList().Count
         End Using
+    End Function
+
+    Public Shared Function IsAdmin(username As String, password As String) As Boolean
+        Dim _isAdmin As Boolean = False
+        Using cnn As IDbConnection = New SQLiteConnection(LoadConnectionString())
+            For Each user In cnn.Query(Of User)("SELECT Admin FROM User WHERE Username=@username AND Password=@password", New With {
+                username,
+                password
+            }).ToList().Take(1)
+                If user.Admin = 1 Then
+                    _isAdmin = True
+                End If
+            Next
+        End Using
+
+        Return _isAdmin
     End Function
 
     Private Shared Function LoadConnectionString() As String
