@@ -1,23 +1,40 @@
 ﻿Imports System.Windows.Forms.DataVisualization.Charting
+Imports ProjectOyster.Models
 
-Public Class Visualization
-    Public Property Chart() As Chart
+Namespace Helpers
+    Public Class Visualization
 
-    Public Sub Populate(list As List(Of Oyster))
-        Chart.Series.Clear()
+        Private _chart As Chart
 
-        Chart.Series.Add(0)
-        Chart.Series(0).ChartType = SeriesChartType.FastLine
-        Chart.Series(0).Name = "Weight"
+        Public Sub Populate(entireSummary As List(Of Oyster))
+            For Each item In entireSummary
+                GetChart().Series(0).Points.AddXY(item.Time, item.Weight)
+            Next
+        End Sub
 
-        Chart.ChartAreas(0).AxisX.Title = "Time"
-        Chart.ChartAreas(0).AxisY.Title = "Kg"
-        Chart.ChartAreas(0).AxisX.Minimum = 0
-        Chart.ChartAreas(0).AxisX.Maximum = SqliteDataAccess.GetAll().Count
+        Public Sub Populate(weeklySummary As List(Of KeyValuePair(Of String, Decimal)))
+            For Each item In weeklySummary
+                GetChart().Series(0).Points.AddXY(item.Key, item.Value)
+            Next
+        End Sub
 
-        ' Populate the chart
-        For Each item In list
-            Chart.Series(0).Points.AddXY(item.Time, item.Weight)
-        Next
-    End Sub
-End Class
+        Public Sub SetChart(chart As Chart, maximum As Integer)
+            _chart = chart
+
+            _chart.Series.Clear()
+
+            _chart.Series.Add(0)
+            _chart.Series(0).ChartType = SeriesChartType.FastLine
+            _chart.Series(0).Name = "Weight"
+
+            _chart.ChartAreas(0).AxisX.Title = "Time"
+            _chart.ChartAreas(0).AxisY.Title = "Units: g"
+            _chart.ChartAreas(0).AxisX.Minimum = 0
+            _chart.ChartAreas(0).AxisX.Maximum = maximum
+        End Sub
+
+        Public Function GetChart() As Chart
+            Return _chart
+        End Function
+    End Class
+End Namespace

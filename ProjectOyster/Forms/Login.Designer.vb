@@ -1,133 +1,134 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Login
-    Inherits System.Windows.Forms.Form
+﻿Namespace Forms
+    <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+    Partial Class Login
+        Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()>
-    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-        Try
-            If disposing AndAlso components IsNot Nothing Then
-                components.Dispose()
-            End If
-        Finally
-            MyBase.Dispose(disposing)
-        End Try
-    End Sub
+        'Form overrides dispose to clean up the component list.
+        <System.Diagnostics.DebuggerNonUserCode()>
+        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+            Try
+                If disposing AndAlso components IsNot Nothing Then
+                    components.Dispose()
+                End If
+            Finally
+                MyBase.Dispose(disposing)
+            End Try
+        End Sub
 
-    'Required by the Windows Form Designer
-    Private components As System.ComponentModel.IContainer
+        'Required by the Windows Form Designer
+        Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()>
-    Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Login))
-        Me.TextBoxUsername = New System.Windows.Forms.TextBox()
-        Me.ButtonLogin = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.TextBoxPassword = New System.Windows.Forms.TextBox()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
-        '
-        'TextBoxUsername
-        '
-        Me.TextBoxUsername.BackColor = System.Drawing.Color.White
-        Me.TextBoxUsername.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBoxUsername.Font = New System.Drawing.Font("Century Gothic", 13.0!)
-        Me.TextBoxUsername.ForeColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(22, Byte), Integer))
-        Me.TextBoxUsername.Location = New System.Drawing.Point(51, 96)
-        Me.TextBoxUsername.Name = "TextBoxUsername"
-        Me.TextBoxUsername.Size = New System.Drawing.Size(177, 22)
-        Me.TextBoxUsername.TabIndex = 0
-        Me.TextBoxUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'ButtonLogin
-        '
-        Me.ButtonLogin.BackColor = System.Drawing.Color.White
-        Me.ButtonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonLogin.Font = New System.Drawing.Font("Century Gothic", 15.0!)
-        Me.ButtonLogin.ForeColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(22, Byte), Integer))
-        Me.ButtonLogin.Location = New System.Drawing.Point(62, 228)
-        Me.ButtonLogin.Name = "ButtonLogin"
-        Me.ButtonLogin.Size = New System.Drawing.Size(153, 48)
-        Me.ButtonLogin.TabIndex = 2
-        Me.ButtonLogin.Text = "Login"
-        Me.ButtonLogin.UseVisualStyleBackColor = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackColor = System.Drawing.Color.White
-        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(278, 413)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
-        Me.PictureBox1.TabIndex = 3
-        Me.PictureBox1.TabStop = False
-        '
-        'TextBoxPassword
-        '
-        Me.TextBoxPassword.BackColor = System.Drawing.Color.White
-        Me.TextBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBoxPassword.Font = New System.Drawing.Font("Century Gothic", 13.0!)
-        Me.TextBoxPassword.ForeColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(22, Byte), Integer))
-        Me.TextBoxPassword.Location = New System.Drawing.Point(51, 147)
-        Me.TextBoxPassword.Name = "TextBoxPassword"
-        Me.TextBoxPassword.Size = New System.Drawing.Size(177, 22)
-        Me.TextBoxPassword.TabIndex = 1
-        Me.TextBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(33, 124)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(212, 1)
-        Me.PictureBox2.TabIndex = 4
-        Me.PictureBox2.TabStop = False
-        '
-        'PictureBox3
-        '
-        Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(33, 175)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(212, 1)
-        Me.PictureBox3.TabIndex = 5
-        Me.PictureBox3.TabStop = False
-        '
-        'Login
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(278, 413)
-        Me.Controls.Add(Me.PictureBox3)
-        Me.Controls.Add(Me.PictureBox2)
-        Me.Controls.Add(Me.ButtonLogin)
-        Me.Controls.Add(Me.TextBoxPassword)
-        Me.Controls.Add(Me.TextBoxUsername)
-        Me.Controls.Add(Me.PictureBox1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "Login"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "LoginForm"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        'NOTE: The following procedure is required by the Windows Form Designer
+        'It can be modified using the Windows Form Designer.  
+        'Do not modify it using the code editor.
+        <System.Diagnostics.DebuggerStepThrough()>
+        Private Sub InitializeComponent()
+            Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Login))
+            Me.ButtonLogin = New System.Windows.Forms.Button()
+            Me.Label1 = New System.Windows.Forms.Label()
+            Me.TextBoxPassword = New System.Windows.Forms.TextBox()
+            Me.Label4 = New System.Windows.Forms.Label()
+            Me.TextBoxUsername = New System.Windows.Forms.TextBox()
+            Me.ButtonExit = New System.Windows.Forms.Button()
+            Me.SuspendLayout()
+            '
+            'ButtonLogin
+            '
+            Me.ButtonLogin.BackColor = System.Drawing.Color.FromArgb(CType(CType(20, Byte), Integer), CType(CType(157, Byte), Integer), CType(CType(204, Byte), Integer))
+            Me.ButtonLogin.FlatAppearance.BorderSize = 0
+            Me.ButtonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.ButtonLogin.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold)
+            Me.ButtonLogin.ForeColor = System.Drawing.Color.White
+            Me.ButtonLogin.Location = New System.Drawing.Point(123, 138)
+            Me.ButtonLogin.Name = "ButtonLogin"
+            Me.ButtonLogin.Size = New System.Drawing.Size(135, 33)
+            Me.ButtonLogin.TabIndex = 16
+            Me.ButtonLogin.Text = "Login"
+            Me.ButtonLogin.UseVisualStyleBackColor = False
+            '
+            'Label1
+            '
+            Me.Label1.AutoSize = True
+            Me.Label1.BackColor = System.Drawing.Color.Transparent
+            Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(6, Byte), Integer), CType(CType(52, Byte), Integer), CType(CType(68, Byte), Integer))
+            Me.Label1.Location = New System.Drawing.Point(41, 86)
+            Me.Label1.Name = "Label1"
+            Me.Label1.Size = New System.Drawing.Size(91, 24)
+            Me.Label1.TabIndex = 15
+            Me.Label1.Text = "password"
+            '
+            'TextBoxPassword
+            '
+            Me.TextBoxPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.25!)
+            Me.TextBoxPassword.ForeColor = System.Drawing.Color.FromArgb(CType(CType(6, Byte), Integer), CType(CType(52, Byte), Integer), CType(CType(68, Byte), Integer))
+            Me.TextBoxPassword.Location = New System.Drawing.Point(161, 84)
+            Me.TextBoxPassword.Name = "TextBoxPassword"
+            Me.TextBoxPassword.Size = New System.Drawing.Size(146, 26)
+            Me.TextBoxPassword.TabIndex = 14
+            '
+            'Label4
+            '
+            Me.Label4.AutoSize = True
+            Me.Label4.BackColor = System.Drawing.Color.Transparent
+            Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(6, Byte), Integer), CType(CType(52, Byte), Integer), CType(CType(68, Byte), Integer))
+            Me.Label4.Location = New System.Drawing.Point(41, 42)
+            Me.Label4.Name = "Label4"
+            Me.Label4.Size = New System.Drawing.Size(100, 24)
+            Me.Label4.TabIndex = 13
+            Me.Label4.Text = "user name"
+            '
+            'TextBoxUsername
+            '
+            Me.TextBoxUsername.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.25!)
+            Me.TextBoxUsername.ForeColor = System.Drawing.Color.FromArgb(CType(CType(6, Byte), Integer), CType(CType(52, Byte), Integer), CType(CType(68, Byte), Integer))
+            Me.TextBoxUsername.Location = New System.Drawing.Point(161, 40)
+            Me.TextBoxUsername.Name = "TextBoxUsername"
+            Me.TextBoxUsername.Size = New System.Drawing.Size(146, 26)
+            Me.TextBoxUsername.TabIndex = 12
+            '
+            'ButtonExit
+            '
+            Me.ButtonExit.BackColor = System.Drawing.Color.Transparent
+            Me.ButtonExit.BackgroundImage = CType(resources.GetObject("ButtonExit.BackgroundImage"), System.Drawing.Image)
+            Me.ButtonExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+            Me.ButtonExit.FlatAppearance.BorderSize = 0
+            Me.ButtonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.ButtonExit.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold)
+            Me.ButtonExit.ForeColor = System.Drawing.Color.White
+            Me.ButtonExit.Location = New System.Drawing.Point(347, 7)
+            Me.ButtonExit.Name = "ButtonExit"
+            Me.ButtonExit.Size = New System.Drawing.Size(17, 19)
+            Me.ButtonExit.TabIndex = 17
+            Me.ButtonExit.UseVisualStyleBackColor = False
+            '
+            'Login
+            '
+            Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+            Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+            Me.BackColor = System.Drawing.Color.White
+            Me.ClientSize = New System.Drawing.Size(376, 204)
+            Me.Controls.Add(Me.ButtonExit)
+            Me.Controls.Add(Me.ButtonLogin)
+            Me.Controls.Add(Me.Label1)
+            Me.Controls.Add(Me.TextBoxPassword)
+            Me.Controls.Add(Me.Label4)
+            Me.Controls.Add(Me.TextBoxUsername)
+            Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+            Me.Name = "Login"
+            Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+            Me.Text = "Login"
+            Me.ResumeLayout(False)
+            Me.PerformLayout()
 
-    End Sub
+        End Sub
 
-    Friend WithEvents TextBoxUsername As TextBox
-    Friend WithEvents ButtonLogin As Button
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents TextBoxPassword As TextBox
-    Friend WithEvents PictureBox2 As PictureBox
-    Friend WithEvents PictureBox3 As PictureBox
-End Class
+        Friend WithEvents ButtonLogin As Button
+        Friend WithEvents Label1 As Label
+        Friend WithEvents TextBoxPassword As TextBox
+        Friend WithEvents Label4 As Label
+        Friend WithEvents TextBoxUsername As TextBox
+        Friend WithEvents ButtonExit As Button
+    End Class
+End Namespace
