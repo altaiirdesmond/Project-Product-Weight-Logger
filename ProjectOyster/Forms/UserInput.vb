@@ -3,10 +3,11 @@
 Namespace Forms
     Public Class UserInput
         Public Shared Property BackButton as Button
-        Public Shared Property ShellPanel As Panel
-        Public Shared Property ShellForm as Form
+        Public Shared Property ShellPanel As Panel ' Container for usercontrols
+        Public Shared Property ShellForm as Form   ' The form
 
         Private Sub UserInput_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            ' Cache control to manipulate from UserControl
             BackButton = ButtonBack
             ShellPanel = PanelContainer
             ShellForm = Me

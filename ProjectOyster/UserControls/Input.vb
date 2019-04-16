@@ -17,22 +17,12 @@ Namespace UserControls
         End Get
         End Property
 
-        Private Sub ButtonOk_Click(sender As Object, e As EventArgs) Handles ButtonOk.Click
+        Private Sub ButtonExtract_Click(sender As Object, e As EventArgs) Handles ButtonExtract.Click, ButtonExtract.Click
             If TextBoxWeight.Text Is String.Empty Or TextBoxUsername.Text Is String.Empty
                 MsgBox("Invalid input", MsgBoxStyle.OkOnly, "Invalid")
 
                 Return
             End If
-
-            Dim serialPortMenu = New SerialPortMenu
-
-            If serialPortMenu.ShowDialog().Equals(DialogResult.Cancel) Then
-                Return
-            End If
-
-            ' Cache the configuration to the Extraction's microcontroller property
-            Extraction.MicroController = serialPortMenu.MicroControllerSetup
-            Extraction.MicroController.InitializePort()
 
             Extraction.Weight = TextBoxWeight.Text
             Extraction.User = TextBoxUsername.Text

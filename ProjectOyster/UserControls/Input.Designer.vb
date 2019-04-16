@@ -24,29 +24,15 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Input))
-        Me.ButtonOk = New System.Windows.Forms.Button()
         Me.TextBoxWeight = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBoxUsername = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBoxBackground = New System.Windows.Forms.PictureBox()
+        Me.ButtonExtract = New System.Windows.Forms.Button()
         CType(Me.PictureBoxBackground,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
-        '
-        'ButtonOk
-        '
-        Me.ButtonOk.BackColor = System.Drawing.Color.FromArgb(CType(CType(20,Byte),Integer), CType(CType(157,Byte),Integer), CType(CType(204,Byte),Integer))
-        Me.ButtonOk.FlatAppearance.BorderSize = 0
-        Me.ButtonOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonOk.Font = New System.Drawing.Font("Century Gothic", 15!, System.Drawing.FontStyle.Bold)
-        Me.ButtonOk.ForeColor = System.Drawing.Color.White
-        Me.ButtonOk.Location = New System.Drawing.Point(366, 369)
-        Me.ButtonOk.Name = "ButtonOk"
-        Me.ButtonOk.Size = New System.Drawing.Size(265, 70)
-        Me.ButtonOk.TabIndex = 21
-        Me.ButtonOk.Text = "OK"
-        Me.ButtonOk.UseVisualStyleBackColor = false
         '
         'TextBoxWeight
         '
@@ -106,12 +92,26 @@
         Me.PictureBoxBackground.TabIndex = 22
         Me.PictureBoxBackground.TabStop = false
         '
+        'ButtonExtract
+        '
+        Me.ButtonExtract.BackColor = System.Drawing.Color.FromArgb(CType(CType(20,Byte),Integer), CType(CType(157,Byte),Integer), CType(CType(204,Byte),Integer))
+        Me.ButtonExtract.FlatAppearance.BorderSize = 0
+        Me.ButtonExtract.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonExtract.Font = New System.Drawing.Font("Century Gothic", 15!, System.Drawing.FontStyle.Bold)
+        Me.ButtonExtract.ForeColor = System.Drawing.Color.White
+        Me.ButtonExtract.Location = New System.Drawing.Point(366, 369)
+        Me.ButtonExtract.Name = "ButtonExtract"
+        Me.ButtonExtract.Size = New System.Drawing.Size(265, 70)
+        Me.ButtonExtract.TabIndex = 21
+        Me.ButtonExtract.Text = "EXTRACT"
+        Me.ButtonExtract.UseVisualStyleBackColor = false
+        '
         'Input
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.Controls.Add(Me.ButtonOk)
+        Me.Controls.Add(Me.ButtonExtract)
         Me.Controls.Add(Me.TextBoxWeight)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.TextBoxUsername)
@@ -125,12 +125,12 @@
         Me.PerformLayout
 
 End Sub
-        Friend WithEvents ButtonOk As Button
         Friend WithEvents TextBoxWeight As TextBox
         Friend WithEvents Label3 As Label
         Friend WithEvents TextBoxUsername As TextBox
         Friend WithEvents Label2 As Label
         Friend WithEvents Label1 As Label
         Friend WithEvents PictureBoxBackground As PictureBox
+        Friend WithEvents ButtonExtract As Button
     End Class
 End Namespace

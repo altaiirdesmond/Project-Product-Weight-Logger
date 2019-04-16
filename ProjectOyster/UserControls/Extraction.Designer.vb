@@ -31,7 +31,6 @@
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ButtonForceStop = New System.Windows.Forms.Button()
         Me.ButtonStopDetach = New System.Windows.Forms.Button()
-        Me.ButtonExtract = New System.Windows.Forms.Button()
         Me.CheckExtractStatus = New System.Windows.Forms.Timer(Me.components)
         Me.ButtonDone = New System.Windows.Forms.Button()
         Me.ButtonContinue = New System.Windows.Forms.Button()
@@ -61,6 +60,7 @@
         Me.TextBoxCurrentStatus.ReadOnly = true
         Me.TextBoxCurrentStatus.Size = New System.Drawing.Size(310, 35)
         Me.TextBoxCurrentStatus.TabIndex = 11
+        Me.TextBoxCurrentStatus.TabStop = false
         Me.TextBoxCurrentStatus.Text = "Idle"
         Me.TextBoxCurrentStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -106,7 +106,7 @@
         Me.ButtonForceStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonForceStop.Font = New System.Drawing.Font("Century Gothic", 15!)
         Me.ButtonForceStop.ForeColor = System.Drawing.Color.Red
-        Me.ButtonForceStop.Location = New System.Drawing.Point(636, 457)
+        Me.ButtonForceStop.Location = New System.Drawing.Point(646, 59)
         Me.ButtonForceStop.Name = "ButtonForceStop"
         Me.ButtonForceStop.Size = New System.Drawing.Size(201, 43)
         Me.ButtonForceStop.TabIndex = 20
@@ -119,27 +119,13 @@
         Me.ButtonStopDetach.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonStopDetach.Font = New System.Drawing.Font("Century Gothic", 15!)
         Me.ButtonStopDetach.ForeColor = System.Drawing.Color.Black
-        Me.ButtonStopDetach.Location = New System.Drawing.Point(396, 457)
+        Me.ButtonStopDetach.Location = New System.Drawing.Point(397, 59)
         Me.ButtonStopDetach.Name = "ButtonStopDetach"
         Me.ButtonStopDetach.Size = New System.Drawing.Size(201, 43)
         Me.ButtonStopDetach.TabIndex = 19
         Me.ButtonStopDetach.TabStop = false
         Me.ButtonStopDetach.Text = "Stop detaching"
         Me.ButtonStopDetach.UseVisualStyleBackColor = false
-        '
-        'ButtonExtract
-        '
-        Me.ButtonExtract.BackColor = System.Drawing.Color.FromArgb(CType(CType(20,Byte),Integer), CType(CType(157,Byte),Integer), CType(CType(204,Byte),Integer))
-        Me.ButtonExtract.FlatAppearance.BorderSize = 0
-        Me.ButtonExtract.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonExtract.Font = New System.Drawing.Font("Century Gothic", 15!, System.Drawing.FontStyle.Bold)
-        Me.ButtonExtract.ForeColor = System.Drawing.Color.White
-        Me.ButtonExtract.Location = New System.Drawing.Point(364, 90)
-        Me.ButtonExtract.Name = "ButtonExtract"
-        Me.ButtonExtract.Size = New System.Drawing.Size(265, 59)
-        Me.ButtonExtract.TabIndex = 17
-        Me.ButtonExtract.Text = "Extract"
-        Me.ButtonExtract.UseVisualStyleBackColor = false
         '
         'CheckExtractStatus
         '
@@ -150,7 +136,7 @@
         Me.ButtonDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonDone.Font = New System.Drawing.Font("Century Gothic", 15!)
         Me.ButtonDone.ForeColor = System.Drawing.Color.FromArgb(CType(CType(20,Byte),Integer), CType(CType(157,Byte),Integer), CType(CType(204,Byte),Integer))
-        Me.ButtonDone.Location = New System.Drawing.Point(155, 457)
+        Me.ButtonDone.Location = New System.Drawing.Point(147, 59)
         Me.ButtonDone.Name = "ButtonDone"
         Me.ButtonDone.Size = New System.Drawing.Size(201, 43)
         Me.ButtonDone.TabIndex = 21
@@ -164,7 +150,7 @@
         Me.ButtonContinue.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonContinue.Font = New System.Drawing.Font("Century Gothic", 15!)
         Me.ButtonContinue.ForeColor = System.Drawing.Color.FromArgb(CType(CType(20,Byte),Integer), CType(CType(157,Byte),Integer), CType(CType(204,Byte),Integer))
-        Me.ButtonContinue.Location = New System.Drawing.Point(396, 532)
+        Me.ButtonContinue.Location = New System.Drawing.Point(397, 135)
         Me.ButtonContinue.Name = "ButtonContinue"
         Me.ButtonContinue.Size = New System.Drawing.Size(201, 43)
         Me.ButtonContinue.TabIndex = 22
@@ -183,7 +169,6 @@
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.ButtonForceStop)
         Me.Controls.Add(Me.ButtonStopDetach)
-        Me.Controls.Add(Me.ButtonExtract)
         Me.Name = "Extraction"
         Me.Size = New System.Drawing.Size(1018, 603)
         Me.Panel1.ResumeLayout(false)
@@ -199,7 +184,6 @@ End Sub
         Friend WithEvents Label4 As Label
         Friend WithEvents ButtonForceStop As Button
         Friend WithEvents ButtonStopDetach As Button
-        Friend WithEvents ButtonExtract As Button
         Friend WithEvents CheckExtractStatus As Timer
         Friend WithEvents ButtonDone As Button
         Friend WithEvents ButtonContinue As Button

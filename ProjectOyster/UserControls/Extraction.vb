@@ -29,17 +29,22 @@ Namespace UserControls
         End Property
 
         Private Sub Extraction_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            Dim serialPortMenu = New SerialPortMenu
+
+            If serialPortMenu.ShowDialog().Equals(DialogResult.Cancel) Then
+                Return
+            End If
+
+            ' Cache the configuration to the Extraction's microcontroller property
+            MicroController = serialPortMenu.MicroControllerSetup
+            MicroController.InitializePort()
+
             ' Listen for events
             AddHandler MicroController.SerialPort.DataReceived, AddressOf DataRecievedHandler
 
             CheckExtractStatus.Start()
-        End Sub
 
-        Private Sub ButtonExtract_Click(sender As Object, e As EventArgs) Handles ButtonExtract.Click
-            If _isExtracting Then
-                Return
-            End If
-
+            ' Start extraction upon load
             Extract()
         End Sub
 
@@ -163,16 +168,19 @@ Namespace UserControls
         End Sub
 
         Private Sub CheckExtractStatus_Tick(sender As Object, e As EventArgs) Handles CheckExtractStatus.Tick
+            ' Control button behaviours
             If _isExtracting <> True Then
                 ButtonStopDetach.Enabled = False
                 ButtonForceStop.Enabled = False
 
-                ButtonExtract.Enabled = True
+                ButtonDone.Enabled = True
+                ButtonContinue.Visible = True
             Else
                 ButtonStopDetach.Enabled = True
                 ButtonForceStop.Enabled = True
 
-                ButtonExtract.Enabled = False
+                ButtonDone.Enabled = False
+                ButtonContinue.Visible = False
             End If
         End Sub
 
@@ -181,13 +189,14 @@ Namespace UserControls
                 Return
             End If
 
+            MicroController.WriteToPort("relay off")
+
             MicroController.ClosePort()
             UserInput.ShellForm.Close()
         End Sub
 
         Private Sub ButtonContinue_Click(sender As Object, e As EventArgs) Handles ButtonContinue.Click
             Extract()
-            ButtonContinue.Visible = False
         End Sub
     End Class
 End Namespace
