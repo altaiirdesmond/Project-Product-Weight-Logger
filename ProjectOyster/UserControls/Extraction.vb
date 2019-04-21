@@ -29,14 +29,6 @@ Namespace UserControls
         End Property
 
         Private Sub Extraction_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            Dim serialPortMenu = New SerialPortMenu
-
-            If serialPortMenu.ShowDialog().Equals(DialogResult.Cancel) Then
-                Return
-            End If
-
-            ' Cache the configuration to the Extraction's microcontroller property
-            MicroController = serialPortMenu.MicroControllerSetup
             MicroController.InitializePort()
 
             ' Listen for events

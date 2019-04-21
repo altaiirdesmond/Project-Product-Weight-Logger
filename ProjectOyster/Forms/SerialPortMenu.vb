@@ -5,7 +5,7 @@ Namespace Forms
     Public Class SerialPortMenu
         Private _mcu As MicroController
 
-        Public ReadOnly Property MicroControllerSetup() As MicroController
+        Public ReadOnly Property MicroControllerSetup As MicroController
             Get
                 Return _mcu
             End Get
