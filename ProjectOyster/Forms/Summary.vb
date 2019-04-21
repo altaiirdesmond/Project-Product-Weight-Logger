@@ -3,6 +3,7 @@
 Namespace Forms
     Public Class Summary
         Private _vs As Visualization
+        Private _close As Boolean
 
         Private Sub Summary_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             _vs = New Visualization()
@@ -14,13 +15,14 @@ Namespace Forms
             MicroController.Instance.ClosePort()
 
             If MsgBox("Do you want to log out?", MsgBoxStyle.YesNo, "Logout?") = MsgBoxResult.No Then
-                Return
+                _close = False
             End If
 
-            Application.ExitThread()
+            Close()
         End Sub
 
         Private Sub ButtonBack_Click(sender As Object, e As EventArgs) Handles ButtonBack.Click
+            _close = True
             Close()
         End Sub
 
@@ -39,6 +41,13 @@ Namespace Forms
 
         Private Sub ButtonMonthly_Click(sender As Object, e As EventArgs) Handles ButtonMonthly.Click
 
+        End Sub
+
+        Private Sub Summary_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+            If Not _close 
+                _close ^= _close
+                e.Cancel = True
+            End If
         End Sub
     End Class
 End Namespace

@@ -14,7 +14,13 @@
             Hide()
 
             Dim summary = New Summary()
-            summary.ShowDialog()
+            If summary.ShowDialog() = DialogResult.Abort Then
+                Close()
+
+                Return
+            End If
+
+            Show()
         End Sub
 
         Private Sub ButtonUser_Click(sender As Object, e As EventArgs) Handles ButtonUser.Click

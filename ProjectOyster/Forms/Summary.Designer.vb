@@ -23,9 +23,9 @@
         'Do not modify it using the code editor.
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.ButtonExit = New System.Windows.Forms.Button()
         Me.ButtonDaily = New System.Windows.Forms.Button()
         Me.ButtonWeekly = New System.Windows.Forms.Button()
@@ -41,6 +41,7 @@
         'ButtonExit
         '
         Me.ButtonExit.BackColor = System.Drawing.Color.White
+        Me.ButtonExit.DialogResult = System.Windows.Forms.DialogResult.Abort
         Me.ButtonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonExit.ForeColor = System.Drawing.Color.FromArgb(CType(CType(20,Byte),Integer), CType(CType(157,Byte),Integer), CType(CType(204,Byte),Integer))
         Me.ButtonExit.Location = New System.Drawing.Point(884, 528)
@@ -110,19 +111,19 @@
         'ChartSummary
         '
         Me.ChartSummary.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        ChartArea1.Name = "ChartArea1"
-        Me.ChartSummary.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.ChartSummary.Legends.Add(Legend1)
+        ChartArea3.Name = "ChartArea1"
+        Me.ChartSummary.ChartAreas.Add(ChartArea3)
+        Legend3.Name = "Legend1"
+        Me.ChartSummary.Legends.Add(Legend3)
         Me.ChartSummary.Location = New System.Drawing.Point(0, 0)
         Me.ChartSummary.Margin = New System.Windows.Forms.Padding(4)
         Me.ChartSummary.Name = "ChartSummary"
         Me.ChartSummary.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None
         Me.ChartSummary.PaletteCustomColors = New System.Drawing.Color() {System.Drawing.Color.FromArgb(CType(CType(20,Byte),Integer), CType(CType(157,Byte),Integer), CType(CType(204,Byte),Integer))}
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.ChartSummary.Series.Add(Series1)
+        Series3.ChartArea = "ChartArea1"
+        Series3.Legend = "Legend1"
+        Series3.Name = "Series1"
+        Me.ChartSummary.Series.Add(Series3)
         Me.ChartSummary.Size = New System.Drawing.Size(851, 603)
         Me.ChartSummary.TabIndex = 0
         Me.ChartSummary.Text = "Chart1"
@@ -130,6 +131,7 @@
         'ButtonBack
         '
         Me.ButtonBack.BackColor = System.Drawing.Color.White
+        Me.ButtonBack.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.ButtonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonBack.ForeColor = System.Drawing.Color.FromArgb(CType(CType(20,Byte),Integer), CType(CType(157,Byte),Integer), CType(CType(204,Byte),Integer))
         Me.ButtonBack.Location = New System.Drawing.Point(884, 469)
