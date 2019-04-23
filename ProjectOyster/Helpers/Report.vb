@@ -15,6 +15,10 @@ Namespace Helpers
             Return (currentDate - firstMonthMonday).Days / 7 + 1
         End Function
 
+        Private Function GetCurrentMonth(currentDate As Date) As Integer
+            Dim nMonth = Date.ParseExact(currentDate, "d/M/yyyy", Nothing).Month
+        End Function
+
         Public Function GetWeeklySummary() As List(Of KeyValuePair(Of String, Decimal))
             ' DATE FORMAT: 5/18/2010 4:47 PM
 
@@ -29,7 +33,7 @@ Namespace Helpers
             ' Get the first month and week found in the first row of database
             Dim sqliteData = SqliteDataAccess.GetAll().First()
             Dim dt = sqliteData.Time.Split(" ")(0)
-            Dim currentWeekOfMonth = GetWeekNumber(Date.ParseExact(dt, "yyyy/M/d", Nothing))
+            Dim currentWeekOfMonth = GetWeekNumberOfMonth(Date.ParseExact(dt, "d/M/yyyy", Nothing))
 
             For Each data As Oyster In SqliteDataAccess.GetAll()
                 ' Increment index
@@ -39,21 +43,23 @@ Namespace Helpers
                 currentWeekSum += data.Weight
 
                 ' Check if current week number has changed
-                If currentWeekOfMonth <> GetWeekNumber(Date.ParseExact(
+                If currentWeekOfMonth <> GetWeekNumberOfMonth(Date.ParseExact(
                     data.Time.Split(" ")(0),
-                    "yyyy/M/d",
+                    "d/M/yyyy",
                     Nothing)) Then
 
                     ' Compute for the average
                     Dim currentWeekAvg = currentWeekSum / i
+                
                     weeklySummary.Add(New KeyValuePair(Of String, Decimal)(data.Time.Split(" ")(0) + " of #" + currentWeekOfMonth.ToString() + " week", currentWeekAvg))
 
                     ' Reset value
                     currentWeekSum = 0
+                    i = 0
                     ' Set new week of the month
                     currentWeekOfMonth = GetWeekNumberOfMonth(Date.ParseExact(
                         data.Time.Split(" ")(0),
-                        "yyyy/M/d",
+                        "d/M/yyyy",
                         Nothing))
                 End If
             Next
@@ -62,34 +68,51 @@ Namespace Helpers
             Return weeklySummary
         End Function
 
+        Public Function GetMonthlySummary() As List(Of KeyValuePair(Of String, Decimal))
 
-        Function GetWeekNumber(d As Date) As Integer
-            Dim d2 = d
+            ' DATE FORMAT: 5/18/2010 4:47 PM
 
-            Dim wd = 0
+            Dim monthlySummary = New List(Of KeyValuePair(Of String, Decimal))
 
-            While d2.DayOfWeek <> CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek
+            ' Index
+            Dim i = 0
 
-                wd += 1
+            ' Instance
+            Dim currentMonthlySum As Decimal
 
-                d2 = d2.AddDays(-1)
+            Dim sqliteData = SqliteDataAccess.GetAll().First()
+            Dim dt = sqliteData.Time.Split(" ")(0)
+            Dim currentMonth = GetCurrentMonth(Date.ParseExact(dt, "d/M/yyyy", Nothing))
 
-            End While
+            For Each data As Oyster In SqliteDataAccess.GetAll()
 
+                i += 1
 
-            Dim m = d.Month
+                currentMonthlySum += data.Weight
 
-            Dim w = 0
+                If currentMonth <> GetCurrentMonth(Date.ParseExact(
+                    data.Time.Split(" ")(0),
+                    "d/M/yyyy",
+                    Nothing))
 
-            Do
+                    ' Compute for the average
+                    Dim currentMonthAvg = currentMonthlySum / i
 
-                w += 1
+                    monthlySummary.Add(New KeyValuePair(Of String, Decimal)(data.Time.Split(" ")(0) + " of #" + currentMonth.ToString() + " month", currentMonthAvg))
 
-                d = d.AddDays(-7)
+                    ' Reset
+                    currentMonthlySum = 0
+                    i = 0
 
-            Loop While d.AddDays(-wd + 6).Month = m
+                    ' Set new week of the month
+                    currentMonth = GetCurrentMonth(Date.ParseExact(
+                        data.Time.Split(" ")(0),
+                        "d/M/yyyy",
+                        Nothing))
+                End If
+            Next
 
-            Return w
+            Return monthlySummary
         End Function
     End Class
 End Namespace

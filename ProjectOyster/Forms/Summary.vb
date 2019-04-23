@@ -40,7 +40,10 @@ Namespace Forms
         End Sub
 
         Private Sub ButtonMonthly_Click(sender As Object, e As EventArgs) Handles ButtonMonthly.Click
-
+            Dim report = New Report
+            _vs = New Visualization()
+            _vs.SetChart(ChartSummary, report.GetMonthlySummary().Count)
+            _vs.Populate(report.GetMonthlySummary())
         End Sub
 
         Private Sub Summary_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
