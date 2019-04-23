@@ -4,7 +4,6 @@ Imports ProjectOyster.Helpers
 Imports ProjectOyster.Models
 
 Namespace UserControls
-
     Public Class Extraction
         Inherits UserControl
 
@@ -12,6 +11,7 @@ Namespace UserControls
         Private _notify As NotifyDelegate       ' Responsible for invoking the referenced method
         Private _isExtracting As Boolean
         Private Shared _instance As Extraction
+        Private _savedDatas as List(Of Oyster)
 
         Public Shared Property MicroController As MicroController
         Public Shared Property Weight As String
@@ -29,6 +29,8 @@ Namespace UserControls
         End Property
 
         Private Sub Extraction_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+            _savedDatas = New List(Of Oyster)
+
             MicroController.InitializePort()
 
             ' Listen for events
@@ -53,13 +55,6 @@ Namespace UserControls
 
             Invoke(Sub() TextBoxCurrentStatus.Text = "Detaching stopped")
             Invoke(Sub() LabelCurrentWeight.Text = "0g")
-
-            If MsgBox("Do you want to save the data?", MsgBoxStyle.YesNo, "Save data") = MsgBoxResult.No Then
-                Return
-            End If
-
-            ' Save the data if you want
-            SaveExtractionData(Weight, Date.Now.ToString("g"), User)
         End Sub
 
         Private Sub ButtonForceStop_Click(sender As Object, e As EventArgs) Handles ButtonForceStop.Click
@@ -75,13 +70,6 @@ Namespace UserControls
 
             Invoke(Sub() TextBoxCurrentStatus.Text = "Force stopped")
             Invoke(Sub() LabelCurrentWeight.Text = "0g")
-
-            If MsgBox("Do you want to save the data?", MsgBoxStyle.YesNo, "Save data") = MsgBoxResult.No Then
-                Return
-            End If
-
-            ' Save the data if you want
-            SaveExtractionData(Weight, Date.Now, User)
         End Sub
 
         Public Sub DataRecievedHandler(sender As Object, e As SerialDataReceivedEventArgs)
@@ -134,9 +122,16 @@ Namespace UserControls
                 If currentWeight < Convert.ToDouble(Weight) Then
                     Return
                 End If
+                
+                Dim oysterData As New Oyster
+                With oysterData
+                    .Time = Date.Now
+                    .Weight = Weight
+                    .User = User
+                End With
 
-                ' Once target weight reached
-                SaveExtractionData(Weight, Date.Now, User)
+                ' Save to database
+                SqliteDataAccess.AddOyster(oysterData)
 
                 Invoke(Sub() TextBoxCurrentStatus.Text = "Idle")
                 Invoke(Sub() LabelCurrentWeight.Text = "0g")
@@ -148,22 +143,11 @@ Namespace UserControls
             End If
         End Sub
 
-        Private Sub SaveExtractionData(weightData As String, time As String, username As String)
-            Dim oyster As New Oyster
-            With oyster
-                .Time = time
-                .Weight = weightData
-                .User = username
-            End With
-
-            SqliteDataAccess.AddOyster(oyster)
-        End Sub
-
         Private Sub CheckExtractStatus_Tick(sender As Object, e As EventArgs) Handles CheckExtractStatus.Tick
             ' Control button behaviours
             If _isExtracting <> True Then
                 ButtonStopDetach.Enabled = False
-                ButtonForceStop.Enabled = False
+                ButtonForceStop.Enabled = True
 
                 ButtonDone.Enabled = True
                 ButtonContinue.Visible = True
@@ -177,9 +161,11 @@ Namespace UserControls
         End Sub
 
         Private Sub ButtonDone_Click(sender As Object, e As EventArgs) Handles ButtonDone.Click
-            If MsgBox("Do you want to log out?", MsgBoxStyle.YesNo, "Logout?") = MsgBoxResult.No Then
-                Return
-            End If
+            For Each oysterData In _savedDatas
+                SqliteDataAccess.AddOyster(oysterData)
+            Next
+
+            MsgBox("Saved to database", MessageBoxButtons.OK, "Saved")
 
             MicroController.WriteToPort("relay off")
 
