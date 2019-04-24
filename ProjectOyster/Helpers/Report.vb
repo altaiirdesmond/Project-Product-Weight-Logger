@@ -1,5 +1,4 @@
-﻿Imports System.Globalization
-Imports ProjectOyster.Models
+﻿Imports ProjectOyster.Models
 
 Namespace Helpers
     Public Class Report
@@ -17,6 +16,8 @@ Namespace Helpers
 
         Private Function GetCurrentMonth(currentDate As Date) As Integer
             Dim nMonth = Date.ParseExact(currentDate, "d/M/yyyy", Nothing).Month
+
+            Return nMonth
         End Function
 
         Public Function GetWeeklySummary() As List(Of KeyValuePair(Of String, Decimal))

@@ -12,6 +12,7 @@ Namespace UserControls
         Private _isExtracting As Boolean
         Private Shared _instance As Extraction
         Private _savedDatas as List(Of Oyster)
+        Private _currentWeight as Double
 
         Public Shared Property MicroController As MicroController
         Public Shared Property Weight As String
@@ -47,6 +48,7 @@ Namespace UserControls
                 Return
             End If
 
+            ButtonDone.Enabled = False
             ButtonContinue.Visible = True
 
             MicroController.WriteToPort("stop detach")
@@ -62,7 +64,17 @@ Namespace UserControls
                 Return
             End If
 
+            Dim oysterData As New Oyster
+            With oysterData
+                .Time = Date.Now
+                .Weight = _currentWeight
+                .User = User
+            End With
+
+            _savedDatas.Add(oysterData)
+
             ButtonContinue.Visible = True
+            ButtonDone.Enabled = True
 
             MicroController.WriteToPort("relay off")
 
@@ -115,23 +127,22 @@ Namespace UserControls
 
             If data.Contains("extracting:") Then
 
-                Dim currentWeight = Convert.ToDouble(data.Substring(11))
+                _currentWeight = Convert.ToDouble(data.Substring(11))
 
-                Invoke(Sub() LabelCurrentWeight.Text = currentWeight.ToString() + "g")
+                Invoke(Sub() LabelCurrentWeight.Text = _currentWeight.ToString() + "g")
 
-                If currentWeight < Convert.ToDouble(Weight) Then
+                If _currentWeight < Convert.ToDouble(Weight) Then
                     Return
                 End If
                 
                 Dim oysterData As New Oyster
                 With oysterData
                     .Time = Date.Now
-                    .Weight = Weight
+                    .Weight = _currentWeight
                     .User = User
                 End With
 
-                ' Save to database
-                SqliteDataAccess.AddOyster(oysterData)
+                _savedDatas.Add(oysterData)
 
                 Invoke(Sub() TextBoxCurrentStatus.Text = "Idle")
                 Invoke(Sub() LabelCurrentWeight.Text = "0g")
@@ -147,14 +158,10 @@ Namespace UserControls
             ' Control button behaviours
             If _isExtracting <> True Then
                 ButtonStopDetach.Enabled = False
-                ButtonForceStop.Enabled = True
-
-                ButtonDone.Enabled = True
                 ButtonContinue.Visible = True
             Else
                 ButtonStopDetach.Enabled = True
                 ButtonForceStop.Enabled = True
-
                 ButtonDone.Enabled = False
                 ButtonContinue.Visible = False
             End If

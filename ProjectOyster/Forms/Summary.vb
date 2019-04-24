@@ -6,6 +6,14 @@ Namespace Forms
         Private _close As Boolean
 
         Private Sub Summary_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+            If SqliteDataAccess.GetAll().Count = 0
+                ButtonDaily.Enabled = False
+                ButtonMonthly.Enabled = False
+                ButtonWeekly.Enabled = False
+                Return
+            End If
+
             _vs = New Visualization()
             _vs.SetChart(ChartSummary, SqliteDataAccess.GetAll().Count)
             _vs.Populate(SqliteDataAccess.GetAll())

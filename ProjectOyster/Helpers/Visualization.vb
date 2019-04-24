@@ -12,8 +12,8 @@ Namespace Helpers
             Next
         End Sub
 
-        Public Sub Populate(weeklySummary As List(Of KeyValuePair(Of String, Decimal)))
-            For Each item In weeklySummary
+        Public Sub Populate(summary As List(Of KeyValuePair(Of String, Decimal)))
+            For Each item In summary
                 GetChart().Series(0).Points.AddXY(item.Key, item.Value)
             Next
         End Sub
